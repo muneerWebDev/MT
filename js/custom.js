@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     // loader 
     $(window).on('load', function(){
-        $("body").removeClass("loading");
+        $("body").addClass("loaded");
     });
 
     

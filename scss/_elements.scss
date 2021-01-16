@@ -29,45 +29,70 @@ body {
     // transform-style: preserve-3d;
     position: relative;
 
-    &.loading{
-        &:before {
-            content: '';
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: $white;
-            z-index: 100;
-        }
-    
+    &:before {
+        content: '';
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: $white;
+        z-index: 100;
+        transition: .5s;
+        transition-delay: .3s;
+    }
+
+    &:after {
+        content: '';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        border: 1.6rem solid $light_grey;
+        border-radius: 50%;
+        border-top: 1.6rem solid $gold;
+        width: 12rem;
+        height: 12rem;
+
+        -webkit-animation: spin 2s linear infinite;
+        /* Safari */
+        animation: fadeUp .3s, spin 2s linear infinite;
+        z-index: 100;
+        transition: .3s;
+    }
+
+
+    &.loaded {
+
+        &::before,
         &:after {
-            content: '';
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
-            border: 1.6rem solid $light_grey;
-            border-radius: 50%;
-            border-top: 1.6rem solid $gold;
-            width: 12rem;
-            height: 12rem;
-            -webkit-animation: spin 2s linear infinite;
-            /* Safari */
-            animation: spin 2s linear infinite;
-            z-index: 100;
+            pointer-events: none;
+        }
+
+        &::before {
+            opacity: 0;
+        }
+
+        &:after {
+            opacity: 0;
         }
     }
 
 }
 
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: $black;
-    &.gold{
+
+    &.gold {
         color: $gold;
     }
 
-    &.grey{
+    &.grey {
         color: $grey;
     }
 }
@@ -100,15 +125,16 @@ h6 {
 
 p {
     line-height: 2.25rem;
+
     &.title,
-    &.depart{
+    &.depart {
         font-size: 1.8rem;
         font-weight: 700;
         color: $grey;
         margin-bottom: 2rem;
     }
 
-    &.depart{
+    &.depart {
         font-weight: 400;
         margin-bottom: 3rem;
     }
@@ -119,25 +145,27 @@ a {
     color: $grey;
 }
 
-button{
+button {
     cursor: pointer;
 }
 
-.btn-primary{
+.btn-primary {
     display: inline-block;
     padding: 1.2rem 2.7rem;
     background: $gold;
     color: $dark_grey;
     font-weight: 500;
     transition: .3s;
-    &:hover{
+
+    &:hover {
         background: $light_gold;
     }
 
-    &.grey{
+    &.grey {
         background: $dark_grey;
         color: $white;
-        &:hover{
+
+        &:hover {
             background: $black;
         }
     }
