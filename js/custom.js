@@ -49,10 +49,32 @@ $(document).ready(function () {
     })
 
     // slider initialize
-    $(".banner.slider, .banner.slider .review-slider").slick({
+
+    var $bannerSlider = $('.banner.slider'),
+    bannerSlider = $bannerSlider[0];
+
+    $(".banner.slider").slick({
         arrows: false,
         dots: true
     });
+
+    $(".banner.slider .review-slider").on('mousedown', function(){
+        bannerSlider.slick.setOption({
+          swipe: false
+      })
+    })
+
+    $(".banner.slider .review-slider").slick({
+        arrows: false,
+        dots: true
+    })
+    .on('afterChange', function(event, slick){
+        bannerSlider.slick.setOption({
+          swipe: true
+      })
+    });
+
+    ////
 
     $(".gallery-slider").slick({
         arrows: true,
