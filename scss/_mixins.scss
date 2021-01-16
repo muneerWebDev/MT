@@ -1,0 +1,66 @@
+
+
+@mixin arrow-frame {
+    border: solid;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    margin-left: .5rem;
+}
+
+@mixin arrow-right {
+    @include arrow-frame;
+    transform: rotate(-45deg);
+}
+
+@mixin arrow-left {
+    @include arrow-frame;
+    transform: rotate(135deg);
+}
+
+@mixin arrow-up {
+    @include arrow-frame;
+    transform: rotate(-135deg);
+}
+
+@mixin arrow-down {
+    @include arrow-frame;
+    transform: rotate(45deg);
+}
+
+
+@mixin whiteNavBar(){
+    background: $white;
+
+    .navbar-nav {
+        background: $white;
+
+        &>li {
+            background: $white;
+
+            a {
+                color: $gold_brown;
+            }
+
+            &:not(.active):hover {
+                background: transparentize($gold, .8);
+            }
+
+            &:not(:last-child) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+
+@keyframes slideUp{
+    0%{
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

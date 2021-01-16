@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:focus {
+    outline: none;
+}
+
+html {
+    margin: 0;
+    height: 100%;
+    font-size: 51.26%;
+
+    @include media-breakpoint-up(lg) {
+        font-size: 62.5%;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: $primary-font;
+    color: $light_grey;
+    font-size: 1.5rem;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    // perspective: 1px;
+    // transform-style: preserve-3d;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: $black;
+    &.gold{
+        color: $gold;
+    }
+
+    &.grey{
+        color: $grey;
+    }
+}
+
+h1 {
+    font-size: 4.8rem;
+}
+
+h2 {
+    font-size: 3.4rem;
+    margin-bottom: 3rem;
+    color: $dark_grey;
+}
+
+h3 {
+    font-size: 2.8rem;
+}
+
+h4 {
+    font-size: 2.8rem;
+}
+
+h5 {
+    font-size: 2.1rem;
+}
+
+h6 {
+    font-size: 1.7rem;
+}
+
+p {
+    line-height: 2.25rem;
+    &.title,
+    &.depart{
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: $grey;
+        margin-bottom: 2rem;
+    }
+
+    &.depart{
+        font-weight: 400;
+        margin-bottom: 3rem;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $grey;
+}
+
+button{
+    cursor: pointer;
+}
+
+.btn-primary{
+    display: inline-block;
+    padding: 1.2rem 2.7rem;
+    background: $gold;
+    color: $dark_grey;
+    font-weight: 500;
+
+    &.grey{
+        background: $dark_grey;
+        color: $white;
+    }
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.slick-track {
+    display: flex;
+}
+
+.slick-slide {
+    height: inherit;
+}
