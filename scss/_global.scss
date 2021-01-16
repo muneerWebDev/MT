@@ -690,18 +690,19 @@ footer {
     height: 100%;
     align-items: center;
     justify-content: center;
-    opacity: 0;
     transition: .3s;
-    pointer-events: none;
     display: flex;
+    opacity: 0;
+    pointer-events: none;
 
     .title {
         color: $dark_grey;
     }
 
-    @include media-breakpoint-down(sm){
+    @include media-breakpoint-down(md) {
         padding: 2.5rem;
     }
+
     .wrapper {
         display: flex;
         background: $light_brown;
@@ -712,10 +713,15 @@ footer {
         transition: .3s;
         max-height: 100%;
 
-        @include media-breakpoint-down(sm){
+        @media (max-width: 1400px) {
+            max-width: 95%;
+        }
+
+        @include media-breakpoint-down(sm) {
             max-width: 100%;
             padding: 2rem;
         }
+
 
         .close {
             position: absolute;
@@ -732,6 +738,13 @@ footer {
             color: $dark_grey;
             border: 2px solid;
             cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 0 10px 15px transparent;
+            z-index: 9;
+
+            &:hover {
+                box-shadow: 0 0 10px 25px transparentize($grey, .95);
+            }
         }
 
         .screen-change {
@@ -746,10 +759,12 @@ footer {
             background: $white;
             border: none;
             font-size: 2rem;
-            font-weight:600;
+            font-weight: 600;
             transition: .3s;
-            &:hover{
-               color: $gold;
+            z-index: 9;
+
+            &:hover {
+                color: $gold;
             }
         }
 
@@ -759,6 +774,7 @@ footer {
             max-height: 100%;
             overflow-y: auto;
             overflow-x: hidden;
+
             .selected_doctor {
                 margin-top: 8.5rem;
                 width: 38%;
@@ -792,16 +808,134 @@ footer {
                 }
             }
 
-            @include media-breakpoint-down(sm){
+            @include media-breakpoint-down(sm) {
                 flex-direction: column;
                 padding-left: 5.1rem;
-                .selected_doctor{
+
+                .selected_doctor {
                     margin: 2rem auto;
                 }
 
-                h2{
+                h2 {
                     font-size: 2.8rem;
                     text-align: center;
+                }
+            }
+        }
+
+        .selection-screen-wrapper {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 5rem;
+            overflow: hidden;
+            pointer-events: none;
+
+            .selection-screen {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0 -1px;
+                transform: translateX(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: .3s;
+                height: 100%;
+
+                @include media-breakpoint-down(md) {
+
+                    margin: -1px;
+
+                }
+
+                .select-option {
+                    width: 33.33%;
+                    padding: 0 1px;
+                    position: relative;
+                    display: flex;
+                    align-items: flex-end;
+                    z-index: 1;
+                    padding: 6rem;
+
+                    @include media-breakpoint-down(md) {
+                        width: 100%;
+                        padding: 1px;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 1px;
+                        width: calc(100% - 2px);
+                        height: 100%;
+                        object-fit: cover;
+                        z-index: -1;
+
+                        @include media-breakpoint-down(md) {
+                            top: 1px;
+                            height: calc(100% - 2px);
+                        }
+                    }
+
+                    .text {
+                        background: transparentize($white, .1);
+
+                        p {
+                            color: $dark_grey;
+                            margin: 0 0 2rem;
+                            text-align: center;
+                            min-width: 25rem;
+
+                            &.title {
+                                margin: 4rem 0 .25rem;
+                            }
+                        }
+                        
+                    @include media-breakpoint-down(md) {
+                        margin-bottom: 4rem;
+                    }
+                    }
+                }
+
+                .input-select-box {
+                    background: $dark_grey;
+                    color: $white;
+                    text-align: center;
+                    padding: 2rem;
+                    font-weight: 600;
+                    font-size: 2rem;
+                    cursor: pointer;
+                    transition: .3s;
+
+                    &:after {
+                        content: '';
+
+                        @include arrow-right();
+                        border-width: 0 3px 3px 0;
+                        padding: 3.5px;
+                    }
+
+                    &:hover {
+                        background: $light_gold;
+                    }
+
+                    &.active {
+                        background: $gold;
+                    }
+                }
+            }
+
+
+            &.active {
+                pointer-events: all;
+
+                .selection-screen {
+                    transform: translateX(0);
+                    opacity: 1;
+                    pointer-events: all;
+                    background: $white;
                 }
             }
         }
@@ -849,7 +983,7 @@ footer {
                 margin-left: 1.5rem;
                 color: $grey;
 
-                @include media-breakpoint-down(sm){
+                @include media-breakpoint-down(sm) {
                     display: block;
                     margin-left: 0;
 
@@ -884,6 +1018,13 @@ input[type="number"] {
     &::placeholder {
         color: $lighter_grey;
     }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        -moz-appearance: textfield;
+    }
 }
 
 
@@ -892,6 +1033,7 @@ input[type="number"] {
     display: flex;
     margin: 0 -8px;
     flex-wrap: wrap;
+
     .input-select-box {
         display: inline-block;
         padding: 1.5rem 2rem;

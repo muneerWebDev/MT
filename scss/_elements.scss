@@ -97,10 +97,17 @@ button{
     background: $gold;
     color: $dark_grey;
     font-weight: 500;
+    transition: .3s;
+    &:hover{
+        background: $light_gold;
+    }
 
     &.grey{
         background: $dark_grey;
         color: $white;
+        &:hover{
+            background: $black;
+        }
     }
 }
 

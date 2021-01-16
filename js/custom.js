@@ -38,6 +38,16 @@ $(document).ready(function () {
         $("body").removeClass("popup-open");
     })
 
+
+    $(".appointment-popup .screen-change").click(function () {
+        $(".selection-screen-wrapper").toggleClass("active");
+    })
+
+    $(".appointment-popup .selection-screen-wrapper .input-select-box").click(function () {
+        $(".appointment-popup .selection-screen-wrapper .input-select-box").removeClass("active");
+        $(".appointment-popup .screen-change").click();
+    })
+
     // slider initialize
     $(".banner.slider, .banner.slider .review-slider").slick({
         arrows: false,
