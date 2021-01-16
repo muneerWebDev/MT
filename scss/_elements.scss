@@ -27,6 +27,38 @@ body {
     overflow-y: auto;
     // perspective: 1px;
     // transform-style: preserve-3d;
+    position: relative;
+
+    &.loading{
+        &:before {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: $white;
+            z-index: 100;
+        }
+    
+        &:after {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            border: 1.6rem solid $light_grey;
+            border-radius: 50%;
+            border-top: 1.6rem solid $gold;
+            width: 12rem;
+            height: 12rem;
+            -webkit-animation: spin 2s linear infinite;
+            /* Safari */
+            animation: spin 2s linear infinite;
+            z-index: 100;
+        }
+    }
+
 }
 
 h1,h2,h3,h4,h5,h6{

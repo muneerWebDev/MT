@@ -1,6 +1,12 @@
+
 $(document).ready(function () {
 
+    // loader 
+    $(window).on('load', function(){
+        $("body").removeClass("loading");
+    });
 
+    
     // basic Layout structure
     dynamicVariableAndDimensions();
 
@@ -137,7 +143,6 @@ $(document).ready(function () {
         var imgUrl = $(this).attr("data-image-src");
         $(this).css("background-image", "url(" + imgUrl + ")");
     });
-
 
 
 });
