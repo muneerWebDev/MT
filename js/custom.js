@@ -51,27 +51,24 @@ $(document).ready(function () {
     // slider initialize
 
     var $bannerSlider = $('.banner.slider'),
-    bannerSlider = $bannerSlider[0];
+        bannerSlider = $bannerSlider[0];
 
     $(".banner.slider").slick({
         arrows: false,
         dots: true
     });
 
-    $(".banner.slider .review-slider").on('mousedown', function(){
-        bannerSlider.slick.setOption({
-          swipe: false
-      })
-    })
-
     $(".banner.slider .review-slider").slick({
         arrows: false,
         dots: true
-    })
-    .on('afterChange', function(event, slick){
+    }).on('mousedown touchstart', function () {
         bannerSlider.slick.setOption({
-          swipe: true
-      })
+            swipe: false
+        })
+    }).on('afterChange', function (event, slick) {
+        bannerSlider.slick.setOption({
+            swipe: true
+        })
     });
 
     ////
